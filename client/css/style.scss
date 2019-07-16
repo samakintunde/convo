@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", "Nunito Sans", Arial, Helvetica, sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+button,
+input {
+  outline: none;
+}
+
+@import "./components/_header";
+@import "./components/_message";
+@import "./components/_form";

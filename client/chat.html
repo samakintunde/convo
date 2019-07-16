@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Chat</title>
+  </head>
+
+  <body>
+    <header class="header">
+      <a href="./index.html">
+        <h1 class="header__title">Chat App</h1>
+      </a>
+      <p class="header__user"></p>
+    </header>
+    <main>
+      <form name="chat-form" autocomplete="off">
+        <input type="text" name="message" placeholder="Enter message here..." />
+        <button type="submit">Send</button>
+      </form>
+      <section class="chat-display-area">
+        <div class="chat"></div>
+      </section>
+    </main>
+    <script src="./js/vendor/socket.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
+</html>

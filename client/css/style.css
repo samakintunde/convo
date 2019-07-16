@@ -1,0 +1,131 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", "Nunito Sans", Arial, Helvetica, sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+button,
+input {
+  outline: none;
+}
+
+.header {
+  padding: 1.5rem 1rem;
+  background-color: #111111;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #ffffff;
+}
+
+.header__title, .header__user {
+  margin: 0;
+  color: #ffffff;
+}
+
+.message {
+  background-color: #333333;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  min-width: 10rem;
+  margin: 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.message__author, .message__timestamp {
+  color: #aaaaaa;
+  font-size: 0.75rem;
+}
+
+.message__timestamp {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.message__text {
+  color: #eeeeee;
+  font-size: 1rem;
+  margin: 0.5rem 0rem;
+}
+
+.message-container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.message-container--right {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.message-container--left {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+
+form {
+  padding: 0.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+form input {
+  padding: 0.5rem 0.5rem;
+  background-color: #eeeeee;
+  border: none;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+}
+
+form input::-webkit-input-placeholder {
+  color: #888888;
+}
+
+form input:-ms-input-placeholder {
+  color: #888888;
+}
+
+form input::-ms-input-placeholder {
+  color: #888888;
+}
+
+form input::placeholder {
+  color: #888888;
+}
+
+form button {
+  background-color: #333333;
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
+  font-family: Montserrat, Arial, Helvetica, sans-serif;
+}
+/*# sourceMappingURL=style.css.map */

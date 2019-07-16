@@ -1,0 +1,15 @@
+.header {
+  padding: 1.5rem 1rem;
+  background-color: #111111;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #ffffff;
+
+  &__title,
+  &__user {
+    margin: 0;
+
+    color: #ffffff;
+  }
+}

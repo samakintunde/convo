@@ -1,0 +1,25 @@
+form {
+  padding: 0.5rem;
+  display: flex;
+
+  input {
+    padding: 0.5rem 0.5rem;
+    background-color: #eeeeee;
+    border: none;
+    flex-basis: 100%;
+
+    &::placeholder {
+      color: #888888;
+    }
+  }
+
+  button {
+    background-color: #333333;
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    min-width: max-content;
+    font-family: Montserrat, Arial, Helvetica, sans-serif;
+  }
+}

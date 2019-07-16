@@ -1,0 +1,39 @@
+.message {
+  background-color: #333333;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  width: max-content;
+  min-width: 10rem;
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: column;
+
+  &__author,
+  &__timestamp {
+    color: #aaaaaa;
+    font-size: 0.75rem;
+  }
+
+  &__timestamp {
+    align-self: flex-end;
+  }
+
+  &__text {
+    color: #eeeeee;
+    font-size: 1rem;
+    margin: 0.5rem 0rem;
+  }
+}
+
+.message-container {
+  width: 100%;
+  display: flex;
+
+  &--right {
+    justify-content: flex-end;
+  }
+
+  &--left {
+    justify-content: flex-start;
+  }
+}
