@@ -1,6 +1,6 @@
 .header {
-  padding: 1.5rem 1rem;
-  background-color: #111111;
+  padding: 1rem;
+  background-color: $darkest;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,7 +9,19 @@
   &__title,
   &__user {
     margin: 0;
+    color: $off-white;
+  }
 
-    color: #ffffff;
+  a {
+    text-decoration: none;
+  }
+
+  &__title {
+    background-color: #ffffff;
+    color: $dark;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 1.25rem;
+    text-transform: uppercase;
   }
 }

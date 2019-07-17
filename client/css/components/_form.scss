@@ -1,25 +1,68 @@
 form {
-  padding: 0.5rem;
+  padding: 0.5rem 0;
   display: flex;
+  flex-direction: column;
+
+  @include breakpoint(tablet) {
+    flex-direction: row;
+  }
+
+  input,
+  button {
+    font-size: 1rem;
+  }
 
   input {
-    padding: 0.5rem 0.5rem;
-    background-color: #eeeeee;
-    border: none;
+    padding: 0.75rem;
+    background-color: $off-white;
+    border: 1px solid #e0e0e0;
     flex-basis: 100%;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    font-family: inherit;
+    line-height: 0;
 
     &::placeholder {
-      color: #888888;
+      color: $grey-mid;
+    }
+
+    &:hover {
+      background-color: lighten($color: $off-white, $amount: 5%);
+      transition: $transition;
+    }
+
+    @include breakpoint(tablet) {
+      margin-right: 0.5rem;
+      margin-bottom: 0;
     }
   }
 
   button {
-    background-color: #333333;
+    background-color: $dark;
     color: #ffffff;
     border: none;
-    padding: 0.5rem;
+    padding: 0.5rem 2rem;
     cursor: pointer;
     min-width: max-content;
     font-family: Montserrat, Arial, Helvetica, sans-serif;
+
+    &:hover {
+      background-color: lighten($color: $dark, $amount: 5%);
+      transition: $transition;
+    }
+  }
+
+  &[name="chat-form"] {
+    position: fixed;
+    bottom: 0;
+    left: 0.5rem;
+    width: calc(100% - 1rem);
+    max-width: $max-page-width;
+    background-color: #ffffff;
+
+    @include breakpoint(tablet) {
+      width: 100%;
+      left: initial;
+    }
   }
 }

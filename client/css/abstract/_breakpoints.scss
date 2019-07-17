@@ -1,0 +1,15 @@
+$devices: (
+  mobile: 320px,
+  tablet: 568px,
+  desktop: 1024px
+);
+
+@function device-width($device-name) {
+  @return map-get($devices, $device-name);
+}
+
+@mixin breakpoint($device) {
+  @media screen and (min-width: device-width($device)) {
+    @content;
+  }
+}

@@ -5,7 +5,7 @@
 
 //   });
 
-const socket = io();
+const socket = io("ws://localhost:5000");
 
 const chatForm = document.forms["chat-form"];
 const setUserForm = document.forms["set-user-form"];
@@ -34,9 +34,9 @@ const renderMessage = payload => {
 
   const messageRow = document.createElement("div");
   if (name === appState.name) {
-    messageRow.className = "message-container message-container--left";
-  } else {
     messageRow.className = "message-container message-container--right";
+  } else {
+    messageRow.className = "message-container message-container--left";
   }
 
   const messageBoxEl = document.createElement("article");
@@ -69,10 +69,10 @@ socket.on("syncMessages", payload => {
   appState.messages.push(payload.message);
 });
 
-// console.log(location);
+let route = location.pathname;
 
 // Send Messages
-if (location.pathname === "/chat.html") {
+if (route.endsWith("/chat.html")) {
   const data = JSON.parse(localStorage.getItem("userData"));
   console.log(data);
   userEl.textContent = appState.name;
@@ -95,7 +95,8 @@ if (location.pathname === "/chat.html") {
 }
 
 // Set Username
-if (location.pathname === "/" || location.pathname === "/index.html") {
+if (route.endsWith("/") || route.endsWith("/index.html")) {
+  // console.log(location);
   setUserForm.addEventListener("submit", e => {
     e.preventDefault();
     appState.name = setUserForm.name.value;
@@ -106,6 +107,12 @@ if (location.pathname === "/" || location.pathname === "/index.html") {
     });
 
     localStorage.setItem("userData", data);
-    location.pathname = "/chat.html";
+    location.pathname = `/client/chat.html`;
+
+    // if (route.endsWith("/")) {
+    //   location.pathname = `/client/chat.html`;
+    // } else {
+    //   location.pathname = `/client/chat.html`;
+    // }
   });
 }

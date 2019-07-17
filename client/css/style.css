@@ -2,6 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Montserrat", "Nunito Sans", Arial, Helvetica, sans-serif;
+  height: 100vh;
 }
 
 p {
@@ -13,8 +14,20 @@ input {
   outline: none;
 }
 
+main {
+  padding: 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  height: calc(100% - 8rem);
+}
+
+main .chat-display-area {
+  height: 100%;
+  overflow-y: scroll;
+}
+
 .header {
-  padding: 1.5rem 1rem;
+  padding: 1rem;
   background-color: #111111;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -30,17 +43,32 @@ input {
 
 .header__title, .header__user {
   margin: 0;
-  color: #ffffff;
+  color: #eeeeee;
+}
+
+.header a {
+  text-decoration: none;
+}
+
+.header__title {
+  background-color: #ffffff;
+  color: #333333;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 1.25rem;
+  text-transform: uppercase;
 }
 
 .message {
   background-color: #333333;
   border-radius: 0.75rem;
-  padding: 1rem;
+  padding: 0.5rem;
   width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
-  min-width: 10rem;
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
   margin: 0.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -52,8 +80,10 @@ input {
 }
 
 .message__author, .message__timestamp {
+  font-family: Arial, Helvetica, sans-serif;
   color: #aaaaaa;
   font-size: 0.75rem;
+  font-weight: lighter;
 }
 
 .message__timestamp {
@@ -87,18 +117,40 @@ input {
 }
 
 form {
-  padding: 0.5rem;
+  padding: 0.5rem 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+@media screen and (min-width: 568px) {
+  form {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+}
+
+form input,
+form button {
+  font-size: 1rem;
 }
 
 form input {
-  padding: 0.5rem 0.5rem;
+  padding: 0.75rem;
   background-color: #eeeeee;
-  border: none;
+  border: 1px solid #e0e0e0;
   -ms-flex-preferred-size: 100%;
       flex-basis: 100%;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  font-family: inherit;
+  line-height: 0;
 }
 
 form input::-webkit-input-placeholder {
@@ -117,15 +169,50 @@ form input::placeholder {
   color: #888888;
 }
 
+form input:hover {
+  background-color: #fbfbfb;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+@media screen and (min-width: 568px) {
+  form input {
+    margin-right: 0.5rem;
+    margin-bottom: 0;
+  }
+}
+
 form button {
   background-color: #333333;
   color: #ffffff;
   border: none;
-  padding: 0.5rem;
+  padding: 0.5rem 2rem;
   cursor: pointer;
   min-width: -webkit-max-content;
   min-width: -moz-max-content;
   min-width: max-content;
   font-family: Montserrat, Arial, Helvetica, sans-serif;
+}
+
+form button:hover {
+  background-color: #404040;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+form[name="chat-form"] {
+  position: fixed;
+  bottom: 0;
+  left: 0.5rem;
+  width: calc(100% - 1rem);
+  max-width: 1000px;
+  background-color: #ffffff;
+}
+
+@media screen and (min-width: 568px) {
+  form[name="chat-form"] {
+    width: 100%;
+    left: initial;
+  }
 }
 /*# sourceMappingURL=style.css.map */

@@ -1,17 +1,19 @@
 .message {
   background-color: #333333;
   border-radius: 0.75rem;
-  padding: 1rem;
+  padding: 0.5rem;
   width: max-content;
-  min-width: 10rem;
+  min-width: max-content;
   margin: 0.5rem;
   display: flex;
   flex-direction: column;
 
   &__author,
   &__timestamp {
+    font-family: Arial, Helvetica, sans-serif;
     color: #aaaaaa;
     font-size: 0.75rem;
+    font-weight: lighter;
   }
 
   &__timestamp {
