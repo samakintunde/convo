@@ -5,7 +5,7 @@
 
 //   });
 
-const socket = io("ws://localhost:5000");
+const socket = io();
 
 const chatForm = document.forms["chat-form"];
 const setUserForm = document.forms["set-user-form"];
@@ -107,12 +107,12 @@ if (route.endsWith("/") || route.endsWith("/index.html")) {
     });
 
     localStorage.setItem("userData", data);
-    location.pathname = `/client/chat.html`;
+    location.pathname = `/chat.html`;
 
-    // if (route.endsWith("/")) {
-    //   location.pathname = `/client/chat.html`;
-    // } else {
-    //   location.pathname = `/client/chat.html`;
-    // }
+    if (route.endsWith("/")) {
+      location.pathname = `chat.html`;
+    } else {
+      location.pathname = `/chat.html`;
+    }
   });
 }
