@@ -2,7 +2,11 @@ main {
   padding: 1rem;
   max-width: $max-page-width;
   margin: 0 auto;
-  height: calc(100% - 8rem);
+  height: calc(100% - 10.75rem);
+
+  @include breakpoint(desktop) {
+    height: calc(100% - 8rem);
+  }
 
   .chat-display-area {
     height: 100%;
