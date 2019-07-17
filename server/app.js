@@ -15,6 +15,7 @@ app.use(express.static(publicDirectoryPath));
 
 ws.on("connection", socket => {
   console.log("A socket connected");
+  console.log(socket);
 
   socket.broadcast.emit("userJoined", {
     message: "A new user has joined"

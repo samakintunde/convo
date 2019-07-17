@@ -87,11 +87,6 @@ const renderMessage = payload => {
   return messageRow;
 };
 
-// Joining the chat
-socket.on("userJoined", payload => {
-  chatArea.appendChild(renderToast(payload));
-});
-
 // Receive Messages
 socket.on("syncMessages", payload => {
   notification().play();
@@ -104,8 +99,13 @@ let route = location.pathname;
 
 // Send Messages
 if (route.endsWith("/chat.html")) {
+  // Joining the chat
+  socket.on("userJoined", payload => {
+    chatArea.appendChild(renderToast(payload));
+  });
+
   const data = JSON.parse(localStorage.getItem("userData"));
-  console.log(data);
+
   userEl.textContent = appState.name;
 
   if (data) {
