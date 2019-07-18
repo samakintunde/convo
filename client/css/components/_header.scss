@@ -6,6 +6,17 @@
   align-items: center;
   color: #ffffff;
 
+  &__user-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__user-image {
+    border-radius: 50%;
+    margin-right: 0.5rem;
+    height: 28px;
+  }
+
   &__title,
   &__user {
     margin: 0;

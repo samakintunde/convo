@@ -1,11 +1,7 @@
-// import { openDB } from "./vendor/idb";
+import { dbPromise } from "./idb-handler.js";
 
-// const db = async () =>
-//   openDB('userInfo', '1.0', {
-
-//   });
-
-const socket = io();
+// SOCKET OPERATIONS
+const socket = io("ws://convo-io.herokuapp.com");
 
 const chatForm = document.forms["chat-form"];
 const setUserForm = document.forms["set-user-form"];
@@ -26,6 +22,8 @@ const getCurrentTime = () => {
   const d = new Date();
   return d.toLocaleTimeString();
 };
+
+const renderProfile = () => {};
 
 // build Toast
 const renderToast = payload => {
@@ -138,12 +136,15 @@ if (route.endsWith("/") || route.endsWith("/index.html")) {
     });
 
     localStorage.setItem("userData", data);
+
+    // Add user profile to database
+
     location.pathname = `/chat.html`;
 
-    if (route.endsWith("/")) {
-      location.pathname = `chat.html`;
-    } else {
-      location.pathname = `/chat.html`;
-    }
+    // if (route.endsWith("/")) {
+    //   location.pathname = `chat.html`;
+    // } else {
+    //   location.pathname = `/chat.html`;
+    // }
   });
 }

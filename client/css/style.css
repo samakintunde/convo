@@ -47,6 +47,21 @@ main .chat-display-area {
   color: #ffffff;
 }
 
+.header__user-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header__user-image {
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  height: 28px;
+}
+
 .header__title, .header__user {
   margin: 0;
   color: #eeeeee;
@@ -66,37 +81,18 @@ main .chat-display-area {
 }
 
 form {
-  padding: 0.5rem 0;
+  padding: 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-@media screen and (min-width: 568px) {
-  form {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-  }
-}
-
-form input,
-form button {
-  font-size: 1rem;
 }
 
 form input {
   padding: 0.75rem;
   background-color: #eeeeee;
   border: 1px solid #e0e0e0;
-  -ms-flex-preferred-size: 100%;
-      flex-basis: 100%;
   margin-bottom: 0.5rem;
+  font-size: 1rem;
   font-weight: bold;
   font-family: inherit;
   line-height: 0;
@@ -126,7 +122,6 @@ form input:hover {
 
 @media screen and (min-width: 568px) {
   form input {
-    margin-right: 0.5rem;
     margin-bottom: 0;
   }
 }
@@ -135,12 +130,8 @@ form button {
   background-color: #333333;
   color: #ffffff;
   border: none;
-  padding: 0.5rem 2rem;
   cursor: pointer;
-  min-width: -webkit-max-content;
-  min-width: -moz-max-content;
-  min-width: max-content;
-  font-family: Montserrat, Arial, Helvetica, sans-serif;
+  font-weight: bold;
 }
 
 form button:hover {
@@ -149,11 +140,38 @@ form button:hover {
   transition: 0.3s;
 }
 
+form[name="set-user-form"] {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+form[name="set-user-form"] button {
+  margin-top: 0.5rem;
+  padding: 0.75rem 0.5rem;
+  width: 100%;
+}
+
+@media screen and (min-width: 568px) {
+  form[name="set-user-form"] {
+    width: 75%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  form[name="set-user-form"] {
+    width: 50%;
+    margin: 0 auto;
+  }
+}
+
 form[name="chat-form"] {
   position: fixed;
   bottom: 0;
-  left: 0.5rem;
-  width: calc(100% - 1rem);
+  left: 0;
+  width: calc(100% - 2rem);
   max-width: 1000px;
   background-color: #ffffff;
 }
@@ -163,6 +181,22 @@ form[name="chat-form"] {
     width: 100%;
     left: initial;
   }
+}
+
+form[name="chat-form"] input {
+  margin-right: 0.5rem;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+}
+
+form[name="chat-form"] button {
+  border-radius: 50%;
+  font-size: 1.25rem;
+  padding: 0 0.75rem;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  height: 45px;
 }
 
 .message {

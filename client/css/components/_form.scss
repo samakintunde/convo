@@ -1,23 +1,13 @@
 form {
-  padding: 0.5rem 0;
+  padding: 1rem;
   display: flex;
-  flex-direction: column;
-
-  @include breakpoint(tablet) {
-    flex-direction: row;
-  }
-
-  input,
-  button {
-    font-size: 1rem;
-  }
 
   input {
     padding: 0.75rem;
     background-color: $off-white;
     border: 1px solid #e0e0e0;
-    flex-basis: 100%;
     margin-bottom: 0.5rem;
+    font-size: 1rem;
     font-weight: bold;
     font-family: inherit;
     line-height: 0;
@@ -32,7 +22,6 @@ form {
     }
 
     @include breakpoint(tablet) {
-      margin-right: 0.5rem;
       margin-bottom: 0;
     }
   }
@@ -41,10 +30,8 @@ form {
     background-color: $dark;
     color: #ffffff;
     border: none;
-    padding: 0.5rem 2rem;
     cursor: pointer;
-    min-width: max-content;
-    font-family: Montserrat, Arial, Helvetica, sans-serif;
+    font-weight: bold;
 
     &:hover {
       background-color: lighten($color: $dark, $amount: 5%);
@@ -52,17 +39,50 @@ form {
     }
   }
 
+  &[name="set-user-form"] {
+    flex-direction: column;
+
+    button {
+      margin-top: 0.5rem;
+      padding: 0.75rem 0.5rem;
+      width: 100%;
+    }
+
+    @include breakpoint(tablet) {
+      width: 75%;
+      margin: 0 auto;
+    }
+    @include breakpoint(desktop) {
+      width: 50%;
+      margin: 0 auto;
+    }
+  }
+
   &[name="chat-form"] {
     position: fixed;
     bottom: 0;
-    left: 0.5rem;
-    width: calc(100% - 1rem);
+    left: 0;
+    width: calc(100% - 2rem);
     max-width: $max-page-width;
     background-color: #ffffff;
 
     @include breakpoint(tablet) {
       width: 100%;
       left: initial;
+    }
+
+    input {
+      margin-right: 0.5rem;
+      flex-basis: 100%;
+    }
+
+    button {
+      border-radius: 50%;
+      font-size: 1.25rem;
+      padding: 0 0.75rem;
+      // width: 45px;
+      width: max-content;
+      height: 45px;
     }
   }
 }

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://kit.fontawesome.com/46effef9c0.js"></script>
     <link rel="stylesheet" href="./css/style.css" />
     <title>Chat App</title>
   </head>
@@ -13,18 +14,30 @@
       <a href="./index.html">
         <h1 class="header__title">Chat App</h1>
       </a>
-      <p class="header__user"></p>
+      <div class="header__user-container">
+        <img
+          class="header__user-image"
+          src="https://api.adorable.io/avatars/28/ann.png"
+        />
+        <p class="header__user-name">Samuel</p>
+      </div>
     </header>
     <main>
       <form name="chat-form" autocomplete="off">
         <input type="text" name="message" placeholder="Enter message here..." />
-        <button type="submit">Send</button>
+        <button type="submit"><i class="fas fa-paper-plane"></i></button>
       </form>
       <section class="chat-display-area">
         <div class="chat"></div>
       </section>
     </main>
-    <script src="./js/vendor/socket.js"></script>
-    <script src="./js/main.js"></script>
+
+    <!-- <script type="module" src="./js/idb-handler.js"></script> -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"
+      integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I="
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="./js/main.js"></script>
   </body>
 </html>
