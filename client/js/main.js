@@ -1,13 +1,14 @@
 import { dbPromise } from "./idb-handler.js";
 
 // SOCKET OPERATIONS
-const socket = io("ws://convo-io.herokuapp.com");
+const socket = io();
 
 const chatForm = document.forms["chat-form"];
 const setUserForm = document.forms["set-user-form"];
 
 const chatArea = document.querySelector(".chat");
-const userEl = document.querySelector(".header__user");
+const userNameEl = document.querySelector(".header__user-name");
+const userImageEl = document.querySelector(".header__user-image");
 
 const appState = {
   name: "",
@@ -97,20 +98,25 @@ let route = location.pathname;
 
 // Send Messages
 if (route.endsWith("/chat.html")) {
+  const data = JSON.parse(localStorage.getItem("userData"));
+
+  if (data) {
+    appState.name = data.name;
+    appState.messages = [...data.messages] || [];
+    userNameEl.innerText = appState.name;
+  }
+
+  socket.emit("userJoined", {
+    name: appState.name
+  });
+
   // Joining the chat
   socket.on("userJoined", payload => {
     chatArea.appendChild(renderToast(payload));
   });
 
-  const data = JSON.parse(localStorage.getItem("userData"));
-
-  userEl.textContent = appState.name;
-
-  if (data) {
-    appState.name = data.name;
-    appState.messages = [...data.messages] || [];
-    userEl.innerText = appState.name;
-  }
+  userNameEl.textContent = appState.name;
+  userImageEl.src = `https://api.adorable.io/avatars/28/${appState.name}.png`;
 
   chatForm.addEventListener("submit", e => {
     e.preventDefault();
@@ -140,11 +146,5 @@ if (route.endsWith("/") || route.endsWith("/index.html")) {
     // Add user profile to database
 
     location.pathname = `/chat.html`;
-
-    // if (route.endsWith("/")) {
-    //   location.pathname = `chat.html`;
-    // } else {
-    //   location.pathname = `/chat.html`;
-    // }
   });
 }

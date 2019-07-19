@@ -193,9 +193,7 @@ form[name="chat-form"] button {
   border-radius: 50%;
   font-size: 1.25rem;
   padding: 0 0.75rem;
-  width: -webkit-max-content;
-  width: -moz-max-content;
-  width: max-content;
+  width: 45px;
   height: 45px;
 }
 

@@ -14,11 +14,10 @@ app.use(express.static(publicDirectoryPath));
 // Generate usernames
 
 ws.on("connection", socket => {
-  console.log("A socket connected");
-  console.log(socket);
-
-  socket.broadcast.emit("userJoined", {
-    message: "A new user has joined"
+  socket.on("userJoined", payload => {
+    socket.broadcast.emit("userJoined", {
+      message: `${payload.name} has joined the chat`
+    });
   });
 
   // socket.emit("userName", userName);
