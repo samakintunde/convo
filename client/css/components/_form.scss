@@ -1,12 +1,10 @@
 form {
-  padding: 1rem;
   display: flex;
 
   input {
     padding: 0.75rem;
     background-color: $off-white;
     border: 1px solid #e0e0e0;
-    margin-bottom: 0.5rem;
     font-size: 1rem;
     font-weight: bold;
     font-family: inherit;
@@ -41,7 +39,11 @@ form {
 
   &[name="set-user-form"] {
     flex-direction: column;
+    padding: 1rem;
 
+    input {
+      margin-bottom: 0.5rem;
+    }
     button {
       margin-top: 0.5rem;
       padding: 0.75rem 0.5rem;
@@ -62,7 +64,8 @@ form {
     position: fixed;
     bottom: 0;
     left: 0;
-    width: calc(100% - 2rem);
+    padding: 0.5rem;
+    width: calc(100% - 1rem);
     max-width: $max-page-width;
     background-color: #ffffff;
 
@@ -76,13 +79,47 @@ form {
       flex-basis: 100%;
     }
 
-    button {
+    button[type="submit"] {
       border-radius: 50%;
-      font-size: 1.25rem;
-      padding: 0 0.75rem;
-      width: 45px;
-      // width: max-content;
+      // padding: 0 0.75rem;
+      width: 60px;
       height: 45px;
+      position: relative;
+
+      .icon-send {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 28px;
+      }
     }
+  }
+}
+
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  // display: inline-block;
+  background-color: $dark;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  // flex-basis: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    width: 45px;
+  }
+
+  input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 45px;
+    opacity: 0;
   }
 }

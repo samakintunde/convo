@@ -15,12 +15,20 @@ app.use(express.static(publicDirectoryPath));
 
 ws.on("connection", socket => {
   socket.on("userJoined", payload => {
+    // Notify chat of new member(s)
     socket.broadcast.emit("userJoined", {
       message: `${payload.name} has joined the chat`
     });
   });
 
-  // socket.emit("userName", userName);
+  socket.on("userTyping", payload => {
+    const { name, isTyping } = payload;
+
+    socket.broadcast.emit("userTyping", {
+      name,
+      isTyping
+    });
+  });
 
   socket.on("sendMessage", payload => {
     ws.emit("syncMessages", {

@@ -10,9 +10,12 @@ const chatArea = document.querySelector(".chat");
 const userNameEl = document.querySelector(".header__user-name");
 const userImageEl = document.querySelector(".header__user-image");
 
+const downloadBtn = document.getElementById(".download-btn");
+
 const appState = {
   name: "",
-  messages: []
+  messages: [],
+  inputFocused: false
 };
 
 const getMessage = () => {
@@ -24,7 +27,14 @@ const getCurrentTime = () => {
   return d.toLocaleTimeString();
 };
 
-const renderProfile = () => {};
+const renderProfile = () => {
+  userNameEl.textContent = appState.name;
+  userImageEl.src = `https://api.adorable.io/avatars/28/${appState.name}.png`;
+};
+
+const renderImage = props => {
+  console.log(props);
+};
 
 // build Toast
 const renderToast = payload => {
@@ -49,6 +59,42 @@ const notification = () => {
   const play = () => tone.play();
 
   return { play };
+};
+
+// HANDLE TYPING
+const setInputFocused = e => {
+  appState.inputFocused = e.eventPhase === 2 ? !appState.inputFocused : null;
+};
+
+const sendIsTyping = payload => {
+  socket.emit("userTyping", payload);
+};
+
+const renderTyping = payload => {
+  const { name, isTyping } = payload;
+
+  // Check if user is currently typing
+  if (!isTyping) {
+    const typingUserEl = document.querySelector(`[data-user-typing="${name}"]`);
+    console.log(typingUserEl);
+    chatArea.removeChild(typingUserEl);
+    return null;
+  } else {
+    const typingUserEl = document.querySelector(`[data-user-typing="${name}"]`);
+
+    if (typingUserEl && typingUserEl.dataset["user-typing"] === name)
+      return null;
+
+    const toastRow = document.createElement("div");
+    toastRow.setAttribute("data-user-typing", name);
+    const toastEl = document.createElement("p");
+
+    toastRow.className = "toast";
+    toastEl.textContent = `${name} is typing...`;
+
+    toastRow.appendChild(toastEl);
+    return toastRow;
+  }
 };
 
 // build Message
@@ -115,14 +161,35 @@ if (route.endsWith("/chat.html")) {
     chatArea.appendChild(renderToast(payload));
   });
 
-  userNameEl.textContent = appState.name;
-  userImageEl.src = `https://api.adorable.io/avatars/28/${appState.name}.png`;
+  chatForm.message.addEventListener("focus", e => {
+    setInputFocused(e);
+    sendIsTyping({ name: appState.name, isTyping: appState.inputFocused });
+  });
+
+  chatForm.message.addEventListener("change", e => {
+    console.log(e.eventPhase);
+  });
+
+  chatForm.message.addEventListener("blur", e => {
+    setInputFocused(e);
+    sendIsTyping({ name: appState.name, isTyping: appState.inputFocused });
+  });
+
+  socket.on("userTyping", payload => {
+    chatArea.appendChild(renderTyping(payload));
+  });
+
+  // Render Image and Name
+  renderProfile();
 
   chatForm.addEventListener("submit", e => {
     e.preventDefault();
 
     const name = appState.name || "Anonymous";
     const message = getMessage();
+
+    // Set typing state After sending message
+    sendIsTyping({ name: appState.name, isTyping: false });
 
     socket.emit("sendMessage", { name, message });
     chatForm.reset();
