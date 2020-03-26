@@ -8,7 +8,7 @@ const server = http.createServer(app);
 const ws = socketio(server);
 
 // Serve website
-const publicDirectoryPath = path.join(__dirname, "../client");
+const publicDirectoryPath = path.join(__dirname, "../dist");
 app.use(express.static(publicDirectoryPath));
 
 // Generate usernames
