@@ -1,26 +1,12 @@
 .header {
-  padding: 1rem;
-  background-color: $darkest;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: #ffffff;
-
-  &__user-container {
-    display: flex;
-    align-items: center;
-  }
+  padding: rem-calc(12) 0;
+  background-color: color(gray-900);
+  color: color(white);
 
   &__user-image {
+    @extend .margin-right-xs;
     border-radius: 50%;
-    margin-right: 0.5rem;
     height: 28px;
-  }
-
-  &__title,
-  &__user {
-    margin: 0;
-    color: $off-white;
   }
 
   a {
@@ -28,9 +14,9 @@
   }
 
   &__title {
-    background-color: #ffffff;
-    color: $dark;
-    padding: 0.25rem 0.5rem;
+    @extend .padding-y-xs, .padding-x-sm;
+    background-color: color(white);
+    color: color(gray-900);
     border-radius: 0.25rem;
     font-size: 1.25rem;
     text-transform: uppercase;

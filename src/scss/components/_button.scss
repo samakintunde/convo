@@ -1,0 +1,17 @@
+%button {
+  @include transition();
+  padding: rem-calc(12) rem-calc(24);
+  border: none;
+  background-color: color(gray-900);
+}
+
+.primary-button {
+  @extend %button;
+  color: color(white);
+}
+
+.secondary-button {
+  @extend %button;
+  border: rem-calc(1) solid color(gray-900);
+  color: color(gray-900);
+}

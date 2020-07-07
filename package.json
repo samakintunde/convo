@@ -6,7 +6,7 @@
   "scripts": {
     "start": "yarn build && node server/app.js",
     "dev": "concurrently \"yarn dev:client\" \"yarn dev:server\"",
-    "dev:client": "parcel watch src/*.html",
+    "dev:client": "parcel watch src/**/*.*",
     "dev:server": "nodemon server/app.js",
     "build": "concurrently \"yarn build:client\" \"yarn build:server\"",
     "build:server": "parcel build server/app.ts -d server/app.js",

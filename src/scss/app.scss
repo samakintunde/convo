@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -14,11 +18,19 @@ input {
   outline: none;
 }
 
+@import "./abstract/typography";
 @import "./abstract/variables";
+@import "./abstract/utils";
+@import "./abstract/colors";
+@import "./abstract/transitions";
 @import "./abstract/breakpoints";
 
-@import "./components/main";
+@import "./base/spacings";
+
+@import "./components/button";
 @import "./components/_header";
 @import "./components/_form";
 @import "./components/_message";
 @import "./components/_toast";
+
+@import "./layout/flex";

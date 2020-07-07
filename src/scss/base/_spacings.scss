@@ -1,0 +1,60 @@
+$spacings: (
+  xs: 8,
+  sm: 16,
+  md: 32,
+  lg: 64,
+  xl: 128
+);
+
+@each $spacing, $spacing-value in $spacings {
+  .padding-#{$spacing} {
+    padding: rem-calc($spacing-value);
+  }
+  .padding-top-#{$spacing} {
+    padding-top: rem-calc($spacing-value);
+  }
+  .padding-right-#{$spacing} {
+    padding-right: rem-calc($spacing-value);
+  }
+  .padding-bottom-#{$spacing} {
+    padding-bottom: rem-calc($spacing-value);
+  }
+  .padding-left-#{$spacing} {
+    padding-left: rem-calc($spacing-value);
+  }
+  .padding-x-#{$spacing} {
+    padding-left: rem-calc($spacing-value);
+    padding-right: rem-calc($spacing-value);
+  }
+  .padding-y-#{$spacing} {
+    padding-top: rem-calc($spacing-value);
+    padding-bottom: rem-calc($spacing-value);
+  }
+  .margin-#{$spacing} {
+    margin: rem-calc($spacing-value);
+  }
+  .margin-top-#{$spacing} {
+    margin-top: rem-calc($spacing-value);
+  }
+  .margin-right-#{$spacing} {
+    margin-right: rem-calc($spacing-value);
+  }
+  .margin-bottom-#{$spacing} {
+    margin-bottom: rem-calc($spacing-value);
+  }
+  .margin-left-#{$spacing} {
+    margin-left: rem-calc($spacing-value);
+  }
+  .margin-x-#{$spacing} {
+    margin-left: rem-calc($spacing-value);
+    margin-right: rem-calc($spacing-value);
+  }
+  .margin-y-#{$spacing} {
+    margin-top: rem-calc($spacing-value);
+    margin-bottom: rem-calc($spacing-value);
+  }
+}
+
+.block {
+  width: 100%;
+}

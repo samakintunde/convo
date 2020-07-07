@@ -10,15 +10,21 @@
 
   <body>
     <header class="header">
-      <a href="./index.html">
-        <h1 class="header__title">Convo</h1>
-      </a>
+      <div class="flex grid-container">
+        <a href="./index.html">
+          <h1 class="header__title">Convo</h1>
+        </a>
+      </div>
     </header>
-    <main>
-      <form name="set-user-form" autocomplete="off">
-        <input type="text" name="name" placeholder="Username" />
-        <button type="submit">Set Username</button>
-      </form>
+    <main class="flex grid-container justify-center">
+      <div class="sm:cell-12 md:cell-9 lg:cell-6 padding-top-sm">
+        <form name="set-user-form" autocomplete="off">
+          <input class="block" type="text" name="name" placeholder="Username" />
+          <button class="primary-button block" type="submit">
+            Set Username
+          </button>
+        </form>
+      </div>
     </main>
     <!-- <script type="module" src="./js/idb-handler.js"></script> -->
     <!-- <script src="https://www.unpkg.com/socket.io-client"></script> -->
@@ -27,6 +33,6 @@
       integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I="
       crossorigin="anonymous"
     ></script>
-    <script type="module" src="./js/app.ts"></script>
+    <script src="./js/app.ts"></script>
   </body>
 </html>
