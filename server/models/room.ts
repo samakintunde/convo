@@ -1,10 +1,11 @@
 import { User } from "./user";
+import { v4 as uuid } from "uuid";
 
-interface IChatRoom {
-  id: string;
+export interface IChatRoom {
+  id?: string;
   name: string;
   admin: User;
-  users: { [key: string]: User };
+  users?: { [key: string]: User };
 }
 
 class ChatRoom {
@@ -14,8 +15,8 @@ class ChatRoom {
   users: { [key: string]: User };
   createdAt: string;
 
-  constructor({ id, name, admin }: IChatRoom) {
-    this.id = id;
+  constructor({ name, admin }: IChatRoom) {
+    this.id = uuid();
     this.name = name;
     this.admin = admin;
     this.users = {};

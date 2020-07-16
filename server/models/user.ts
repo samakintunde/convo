@@ -1,5 +1,7 @@
+import { v4 as uuid } from "uuid";
+
 interface IUser {
-  id: string;
+  id?: string;
   name: string;
 }
 
@@ -8,7 +10,7 @@ class User {
   name: string;
 
   constructor({ id, name }: IUser) {
-    this.id = id;
+    this.id = id || uuid();
     this.name = name;
   }
 }
