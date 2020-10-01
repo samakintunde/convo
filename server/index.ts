@@ -37,7 +37,7 @@ type CreateRoomPayload = {
 };
 
 ws.on("connection", (socket) => {
-  console.log("connected");
+  console.log(rooms);
   socket.on(CREATE_ROOM, (payload: CreateRoomPayload) => {
     const admin = new User({
       name: payload.username,
@@ -55,6 +55,7 @@ ws.on("connection", (socket) => {
       chatRoom
         ? {
             room: chatRoom,
+            user: admin,
             success: true,
           }
         : null
@@ -62,9 +63,27 @@ ws.on("connection", (socket) => {
   });
   // Generate usernames
   socket.on(USER_JOINED, (payload: any) => {
-    // const user = new User(payload.username);
-    // console.log(payload);
-    console.log("User joined");
+    const chatRoomIndex = rooms.findIndex((room) => room.id === payload.roomId);
+
+    if(chatRoomIndex === -1) {
+      return socket.emit(USER_JOINED, {
+        success: false
+      });
+    }
+
+    const chatRoom = rooms[chatRoomIndex];
+
+    const newUser = new User({
+      name: payload.username,
+    });
+
+    chatRoom.addUser(newUser);
+
+    socket.emit(USER_JOINED, {
+      room: chatRoom,
+      user: newUser,
+      success: true,
+    });
   });
 
   socket.on(SEND_MESSAGE, (payload: any) => {

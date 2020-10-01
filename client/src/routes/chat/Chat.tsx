@@ -13,8 +13,9 @@ import { MessageType } from "constants/messages";
 import { useHistory } from "react-router-dom";
 import { IChatRoom, IUser } from "routes/create-room/CreateRoom";
 import { useSocket } from "contexts/socketio";
-import { SEND_MESSAGE } from "constants/events";
+import { SEND_MESSAGE, USER_JOINED } from "constants/events";
 import { format, parseISO } from "date-fns";
+import { FiUsers } from "react-icons/fi";
 
 const StyledChat = styled.section`
   height: calc(100vh - 50px);
@@ -38,6 +39,7 @@ type Message = {
 export const Chat = () => {
   const history = useHistory();
   const [room, setRoom] = useState<IChatRoom | undefined>(undefined);
+  const [newUser, setNewUser] = useState("");
   const [currentUser, setCurrentUser] = useState<IUser | undefined>(undefined);
   const [messages, setMessages] = useState<Message[]>([]);
   const socket = useSocket();
@@ -90,6 +92,12 @@ export const Chat = () => {
       ]);
     });
 
+    // TODO: Existing user not receiving new messages
+    socket.on(USER_JOINED, (payload: { room: IChatRoom; user: IUser }) => {
+      setRoom(payload.room);
+      alert(`${payload.user.name} has joined`);
+    });
+
     return () => {
       socket.disconnect();
     };
@@ -109,6 +117,8 @@ export const Chat = () => {
     };
 
     socket.emit(SEND_MESSAGE, message);
+    // @ts-ignore
+    e.target.reset();
   };
 
   return (
