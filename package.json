@@ -2,5 +2,6 @@
   "scripts": {
     "dev:server": "cd server && yarn dev",
     "dev:client": "cd client && yarn start"
-  }
+  },
+  "dependencies": {}
 }
